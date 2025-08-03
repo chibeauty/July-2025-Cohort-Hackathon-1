@@ -441,6 +441,49 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             display: block;
+            cursor: pointer;
+        }
+
+        /* Modal styles */
+        .modal-backdrop {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-backdrop.active {
+            display: flex;
+        }
+        .project-modal {
+            background: #fff;
+            color: #23272f;
+            border-radius: 18px;
+            max-width: 420px;
+            width: 95vw;
+            box-shadow: 0 8px 32px rgba(37,99,235,0.18);
+            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+            position: relative;
+            animation: fadeInUp 0.4s;
+        }
+        .project-modal h3 {
+            margin-top: 0;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.7rem;
+            color: #2563eb;
+            cursor: pointer;
+        }
+        body.dark-mode .project-modal {
+            background: #23272f;
+            color: #e5e7eb;
         }
 
         .project-card:hover {
@@ -876,6 +919,12 @@
         <section id="projects" aria-labelledby="projects-heading">
             <div class="container">
                 <h2 id="projects-heading" class="section-title">Projects</h2>
+                <!-- Animated project counter -->
+                <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+                  <div style="background: #2563eb; color: #fff; border-radius: 18px; padding: 1.1rem 2.2rem; font-size: 2.1rem; font-weight: 700; box-shadow: 0 2px 12px rgba(37,99,235,0.10); min-width: 120px; text-align: center;">
+                    <span id="projectCounter" aria-label="Number of projects">0</span> <span style="font-size:1.1rem; font-weight:400;">Projects</span>
+                  </div>
+                </div>
                 <!-- Project filter buttons -->
                 <div class="project-filters">
                     <button class="project-filter-btn active" data-filter="all" type="button">All</button>
@@ -884,7 +933,7 @@
                     <button class="project-filter-btn" data-filter="portfolio" type="button">Portfolio</button>
                 </div>
                 <div class="projects-grid">
-                    <article class="project-card" data-category="frontend">
+                    <article class="project-card" data-category="frontend" data-title="Basic calculator" data-img="project1.jpg" data-description="A simple web-based calculator built with HTML, CSS, and JavaScript. Features include basic arithmetic operations and a user-friendly interface." data-link="#">
                         <figure class="project-image" style="padding:0; height:200px; background:#fff;">
                             <img src="project1.jpg" alt="Basic calculator screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
                         </figure>
@@ -894,7 +943,7 @@
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </article>
-                    <article class="project-card" data-category="html">
+                    <article class="project-card" data-category="html" data-title="Basic web page using HTML5 semantic tags" data-img="project2.jpg" data-description="A simple web page demonstrating the use of HTML5 semantic tags for better structure and accessibility." data-link="#">
                         <figure class="project-image" style="padding:0; height:200px; background:#fff;">
                             <img src="project2.jpg" alt="HTML5 semantic tags project screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
                         </figure>
@@ -904,7 +953,7 @@
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </article>
-                    <article class="project-card" data-category="portfolio">
+                    <article class="project-card" data-category="portfolio" data-title="Personal Portfolio Website" data-img="project3.jpg" data-description="A personal portfolio website showcasing my projects, skills, and experience. Built with HTML, CSS, and JavaScript, it features a responsive design and smooth scrolling." data-link="#">
                         <figure class="project-image" style="padding:0; height:200px; background:#fff;">
                             <img src="project3.jpg" alt="Personal Portfolio Website screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
                         </figure>
@@ -914,6 +963,18 @@
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </article>
+                </div>
+                <!-- Modal for project details -->
+                <div class="modal-backdrop" id="projectModalBackdrop" tabindex="-1" aria-modal="true" role="dialog" aria-label="Project details">
+                  <div class="project-modal" id="projectModal">
+                    <button class="modal-close-btn" id="closeProjectModal" aria-label="Close project details">&times;</button>
+                    <figure style="margin-bottom:1.2rem;">
+                      <img id="modalProjectImg" src="" alt="Project image" style="width:100%; border-radius:10px; max-height:180px; object-fit:cover;" />
+                    </figure>
+                    <h3 id="modalProjectTitle"></h3>
+                    <p id="modalProjectDesc"></p>
+                    <a id="modalProjectLink" href="#" class="project-link" target="_blank" rel="noopener">View Project →</a>
+                  </div>
                 </div>
             </div>
         </section>
@@ -998,7 +1059,38 @@
             <p>&copy; 2025 GLORIA NGWU. All rights reserved.</p>
         </div>
     </footer>
+</body>
 <script>
+// Animated project counter logic
+const projectCounter = document.getElementById('projectCounter');
+const totalProjects = document.querySelectorAll('.project-card').length;
+let counterStarted = false;
+function animateCounter() {
+  let current = 0;
+  const duration = 900;
+  const step = Math.ceil(totalProjects / (duration / 24));
+  function update() {
+    current += step;
+    if (current >= totalProjects) {
+      projectCounter.textContent = totalProjects;
+    } else {
+      projectCounter.textContent = current;
+      requestAnimationFrame(update);
+    }
+  }
+  update();
+}
+// Trigger animation when counter is visible
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !counterStarted) {
+      counterStarted = true;
+      animateCounter();
+      counterObserver.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+counterObserver.observe(projectCounter);
 // ...existing code...
 
 // Project filtering logic
@@ -1019,6 +1111,46 @@ filterBtns.forEach(btn => {
       }
     });
   });
+});
+
+// Project modal popup logic
+const modalBackdrop = document.getElementById('projectModalBackdrop');
+const modal = document.getElementById('projectModal');
+const closeModalBtn = document.getElementById('closeProjectModal');
+const modalTitle = document.getElementById('modalProjectTitle');
+const modalImg = document.getElementById('modalProjectImg');
+const modalDesc = document.getElementById('modalProjectDesc');
+const modalLink = document.getElementById('modalProjectLink');
+
+projectCards.forEach(card => {
+  card.addEventListener('click', e => {
+    // Prevent link click from triggering modal
+    if (e.target.closest('a')) return;
+    modalTitle.textContent = card.getAttribute('data-title');
+    modalImg.src = card.getAttribute('data-img');
+    modalImg.alt = card.getAttribute('data-title') + ' image';
+    modalDesc.textContent = card.getAttribute('data-description');
+    modalLink.href = card.getAttribute('data-link');
+    modalBackdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    closeModalBtn.focus();
+  });
+});
+closeModalBtn.addEventListener('click', () => {
+  modalBackdrop.classList.remove('active');
+  document.body.style.overflow = '';
+});
+modalBackdrop.addEventListener('click', e => {
+  if (e.target === modalBackdrop) {
+    modalBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+document.addEventListener('keydown', e => {
+  if (modalBackdrop.classList.contains('active') && (e.key === 'Escape' || e.key === 'Esc')) {
+    modalBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 });
 </script>
 </body>
