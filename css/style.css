@@ -1,0 +1,78 @@
+/* Main Stylesheet for July-2025-Cohort-Hackathon-1 */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f6fb;
+    color: #222;
+}
+
+header {
+    background: linear-gradient(90deg, #4f8cff 0%, #6ed6ff 100%);
+    color: #fff;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 2rem;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #4f8cff;
+    margin-bottom: 1rem;
+}
+
+.interests, .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.interest, .project {
+    background: #f0f4fa;
+    border-radius: 8px;
+    padding: 1rem;
+    flex: 1 1 220px;
+    max-width: 260px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    color: #888;
+    font-size: 0.95em;
+}
+
+@media (max-width: 700px) {
+    main {
+        padding: 1rem;
+    }
+    .interests, .projects {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

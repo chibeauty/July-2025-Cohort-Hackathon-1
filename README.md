@@ -1,3 +1,41 @@
+# July-2025-Cohort-Hackathon-1
+
+## Project Overview
+A personal portfolio web project showcasing interests, projects, and profile information.
+
+## Features
+- Responsive design
+- Visually appealing layout
+- Sections for profile, interests, and projects
+
+## Getting Started
+1. Clone the repository:
+   ```
+   git clone https://github.com/chibeauty/July-2025-Cohort-Hackathon-1.git
+   ```
+2. Open `index.html` in your browser.
+
+## Deployment
+This project can be deployed using GitHub Pages:
+- Go to your repository on GitHub
+- Click on Settings > Pages
+- Set the source branch to `main` and folder to `/root`
+- Save and access your site at `https://chibeauty.github.io/July-2025-Cohort-Hackathon-1/`
+
+## Technology Stack
+- HTML5
+- CSS3 (responsive, modern design)
+
+## Development Process
+- Use branches for new features
+- Open issues for bugs or enhancements
+- Document progress in pull requests
+
+## Credits
+- Developed by chibeauty
+
+## License
+MIT License
 # Gloria Ngwu - Personal Portfolio Website
 
 Welcome to the source code of my personal portfolio website! This site serves as a digital introduction to who I am as a developer—highlighting my background, technical skills, and projects.
