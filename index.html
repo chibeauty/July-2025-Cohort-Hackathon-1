@@ -468,6 +468,14 @@
             position: relative;
             animation: fadeInUp 0.4s;
         }
+        .project-modal-details {
+            margin-top: 1.1rem;
+            font-size: 1.01rem;
+            color: #444;
+        }
+        body.dark-mode .project-modal-details {
+            color: #cbd5e1;
+        }
         .project-modal h3 {
             margin-top: 0;
         }
@@ -496,6 +504,25 @@
             gap: 1rem;
             justify-content: center;
             margin-bottom: 2.5rem;
+        }
+        /* Ripple effect for buttons */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.5s linear;
+            background: rgba(37,99,235,0.25);
+            pointer-events: none;
+        }
+        @keyframes ripple {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
         }
         .project-filter-btn {
             background: #fff;
@@ -919,21 +946,27 @@
         <section id="projects" aria-labelledby="projects-heading">
             <div class="container">
                 <h2 id="projects-heading" class="section-title">Projects</h2>
-                <!-- Animated project counter -->
-                <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+                <!-- Animated project stats -->
+                <div style="display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
                   <div style="background: #2563eb; color: #fff; border-radius: 18px; padding: 1.1rem 2.2rem; font-size: 2.1rem; font-weight: 700; box-shadow: 0 2px 12px rgba(37,99,235,0.10); min-width: 120px; text-align: center;">
                     <span id="projectCounter" aria-label="Number of projects">0</span> <span style="font-size:1.1rem; font-weight:400;">Projects</span>
+                  </div>
+                  <div style="background: #2563eb; color: #fff; border-radius: 18px; padding: 1.1rem 2.2rem; font-size: 2.1rem; font-weight: 700; box-shadow: 0 2px 12px rgba(37,99,235,0.10); min-width: 120px; text-align: center;">
+                    <span id="techCounter" aria-label="Technologies used">0</span> <span style="font-size:1.1rem; font-weight:400;">Technologies</span>
+                  </div>
+                  <div style="background: #2563eb; color: #fff; border-radius: 18px; padding: 1.1rem 2.2rem; font-size: 2.1rem; font-weight: 700; box-shadow: 0 2px 12px rgba(37,99,235,0.10); min-width: 120px; text-align: center;">
+                    <span id="expCounter" aria-label="Years of experience">0</span> <span style="font-size:1.1rem; font-weight:400;">Years Experience</span>
                   </div>
                 </div>
                 <!-- Project filter buttons -->
                 <div class="project-filters">
-                    <button class="project-filter-btn active" data-filter="all" type="button">All</button>
-                    <button class="project-filter-btn" data-filter="frontend" type="button">Frontend</button>
-                    <button class="project-filter-btn" data-filter="html" type="button">HTML</button>
-                    <button class="project-filter-btn" data-filter="portfolio" type="button">Portfolio</button>
+                    <button class="project-filter-btn ripple active" data-filter="all" type="button">All</button>
+                    <button class="project-filter-btn ripple" data-filter="frontend" type="button">Frontend</button>
+                    <button class="project-filter-btn ripple" data-filter="html" type="button">HTML</button>
+                    <button class="project-filter-btn ripple" data-filter="portfolio" type="button">Portfolio</button>
                 </div>
                 <div class="projects-grid">
-                    <article class="project-card" data-category="frontend" data-title="Basic calculator" data-img="project1.jpg" data-description="A simple web-based calculator built with HTML, CSS, and JavaScript. Features include basic arithmetic operations and a user-friendly interface." data-link="#">
+                    <article class="project-card" data-category="frontend" data-title="Basic calculator" data-img="project1.jpg" data-description="A simple web-based calculator built with HTML, CSS, and JavaScript. Features include basic arithmetic operations and a user-friendly interface." data-link="#" data-details="<ul><li>Built with vanilla JS, HTML, CSS</li><li>Responsive keypad and display</li><li>Handles decimals and keyboard input</li></ul>">
                         <figure class="project-image" style="padding:0; height:200px; background:#fff;">
                             <img src="project1.jpg" alt="Basic calculator screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
                         </figure>
@@ -943,7 +976,7 @@
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </article>
-                    <article class="project-card" data-category="html" data-title="Basic web page using HTML5 semantic tags" data-img="project2.jpg" data-description="A simple web page demonstrating the use of HTML5 semantic tags for better structure and accessibility." data-link="#">
+                    <article class="project-card" data-category="html" data-title="Basic web page using HTML5 semantic tags" data-img="project2.jpg" data-description="A simple web page demonstrating the use of HTML5 semantic tags for better structure and accessibility." data-link="#" data-details="<ul><li>Semantic tags: header, nav, main, section, footer</li><li>Accessible structure for screen readers</li><li>Clean, readable code</li></ul>">
                         <figure class="project-image" style="padding:0; height:200px; background:#fff;">
                             <img src="project2.jpg" alt="HTML5 semantic tags project screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
                         </figure>
@@ -953,7 +986,7 @@
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </article>
-                    <article class="project-card" data-category="portfolio" data-title="Personal Portfolio Website" data-img="project3.jpg" data-description="A personal portfolio website showcasing my projects, skills, and experience. Built with HTML, CSS, and JavaScript, it features a responsive design and smooth scrolling." data-link="#">
+                    <article class="project-card" data-category="portfolio" data-title="Personal Portfolio Website" data-img="project3.jpg" data-description="A personal portfolio website showcasing my projects, skills, and experience. Built with HTML, CSS, and JavaScript, it features a responsive design and smooth scrolling." data-link="#" data-details="<ul><li>Modern, responsive design</li><li>Light/dark mode toggle</li><li>Animated stats and project modal</li></ul>">
                         <figure class="project-image" style="padding:0; height:200px; background:#fff;">
                             <img src="project3.jpg" alt="Personal Portfolio Website screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
                         </figure>
@@ -966,13 +999,14 @@
                 </div>
                 <!-- Modal for project details -->
                 <div class="modal-backdrop" id="projectModalBackdrop" tabindex="-1" aria-modal="true" role="dialog" aria-label="Project details">
-                  <div class="project-modal" id="projectModal">
+                    <div class="project-modal" id="projectModal">
                     <button class="modal-close-btn" id="closeProjectModal" aria-label="Close project details">&times;</button>
                     <figure style="margin-bottom:1.2rem;">
                       <img id="modalProjectImg" src="" alt="Project image" style="width:100%; border-radius:10px; max-height:180px; object-fit:cover;" />
                     </figure>
                     <h3 id="modalProjectTitle"></h3>
                     <p id="modalProjectDesc"></p>
+                    <div class="project-modal-details" id="modalProjectDetails"></div>
                     <a id="modalProjectLink" href="#" class="project-link" target="_blank" rel="noopener">View Project →</a>
                   </div>
                 </div>
@@ -1061,36 +1095,58 @@
     </footer>
 </body>
 <script>
-// Animated project counter logic
+// Animated project stats logic
 const projectCounter = document.getElementById('projectCounter');
+const techCounter = document.getElementById('techCounter');
+const expCounter = document.getElementById('expCounter');
 const totalProjects = document.querySelectorAll('.project-card').length;
+const totalTechs = 12; // Example: JS, TS, React, Vue, HTML5, CSS3, Sass, Node, Python, Express, Django, PostgreSQL
+const yearsExp = 2; // Example: 2 years experience
 let counterStarted = false;
-function animateCounter() {
+function animateStat(el, end, duration) {
   let current = 0;
-  const duration = 900;
-  const step = Math.ceil(totalProjects / (duration / 24));
+  const step = Math.max(1, Math.ceil(end / (duration / 24)));
   function update() {
     current += step;
-    if (current >= totalProjects) {
-      projectCounter.textContent = totalProjects;
+    if (current >= end) {
+      el.textContent = end;
     } else {
-      projectCounter.textContent = current;
+      el.textContent = current;
       requestAnimationFrame(update);
     }
   }
   update();
+}
+function animateCounters() {
+  animateStat(projectCounter, totalProjects, 900);
+  animateStat(techCounter, totalTechs, 900);
+  animateStat(expCounter, yearsExp, 900);
 }
 // Trigger animation when counter is visible
 const counterObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !counterStarted) {
       counterStarted = true;
-      animateCounter();
+      animateCounters();
       counterObserver.disconnect();
     }
   });
 }, { threshold: 0.5 });
 counterObserver.observe(projectCounter);
+
+// Button ripple effect
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const circle = document.createElement('span');
+    circle.className = 'ripple-effect';
+    const rect = btn.getBoundingClientRect();
+    circle.style.left = (e.clientX - rect.left) + 'px';
+    circle.style.top = (e.clientY - rect.top) + 'px';
+    circle.style.width = circle.style.height = Math.max(rect.width, rect.height) + 'px';
+    btn.appendChild(circle);
+    setTimeout(() => circle.remove(), 500);
+  });
+});
 // ...existing code...
 
 // Project filtering logic
@@ -1113,7 +1169,7 @@ filterBtns.forEach(btn => {
   });
 });
 
-// Project modal popup logic
+// Project modal popup logic (with more details)
 const modalBackdrop = document.getElementById('projectModalBackdrop');
 const modal = document.getElementById('projectModal');
 const closeModalBtn = document.getElementById('closeProjectModal');
@@ -1121,6 +1177,7 @@ const modalTitle = document.getElementById('modalProjectTitle');
 const modalImg = document.getElementById('modalProjectImg');
 const modalDesc = document.getElementById('modalProjectDesc');
 const modalLink = document.getElementById('modalProjectLink');
+const modalDetails = document.getElementById('modalProjectDetails');
 
 projectCards.forEach(card => {
   card.addEventListener('click', e => {
@@ -1131,6 +1188,7 @@ projectCards.forEach(card => {
     modalImg.alt = card.getAttribute('data-title') + ' image';
     modalDesc.textContent = card.getAttribute('data-description');
     modalLink.href = card.getAttribute('data-link');
+    modalDetails.innerHTML = card.getAttribute('data-details') || '';
     modalBackdrop.classList.add('active');
     document.body.style.overflow = 'hidden';
     closeModalBtn.focus();
