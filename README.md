@@ -1,41 +1,3 @@
-# July-2025-Cohort-Hackathon-1
-
-## Project Overview
-A personal portfolio web project showcasing interests, projects, and profile information.
-
-## Features
-- Responsive design
-- Visually appealing layout
-- Sections for profile, interests, and projects
-
-## Getting Started
-1. Clone the repository:
-   ```
-   git clone https://github.com/chibeauty/July-2025-Cohort-Hackathon-1.git
-   ```
-2. Open `index.html` in your browser.
-
-## Deployment
-This project can be deployed using GitHub Pages:
-- Go to your repository on GitHub
-- Click on Settings > Pages
-- Set the source branch to `main` and folder to `/root`
-- Save and access your site at `https://chibeauty.github.io/July-2025-Cohort-Hackathon-1/`
-
-## Technology Stack
-- HTML5
-- CSS3 (responsive, modern design)
-
-## Development Process
-- Use branches for new features
-- Open issues for bugs or enhancements
-- Document progress in pull requests
-
-## Credits
-- Developed by chibeauty
-
-## License
-MIT License
 # Gloria Ngwu - Personal Portfolio Website
 
 Welcome to the source code of my personal portfolio website! This site serves as a digital introduction to who I am as a developer—highlighting my background, technical skills, and projects.
@@ -61,6 +23,19 @@ This responsive, accessible, and modern portfolio site was created using:
 
 ---
 
+
+## 📸 Screenshots
+
+Added screenshots of my site here:
+
+![Home Page Screenshot](./project3.jpg)
+
+## 🌐 Live Demo
+
+[View the live site on GitHub Pages](https://chibeauty.github.io/July-2025-Cohort-Hackathon-1/)
+
+---
+
 ## 🧠 Features
 
 - Fully responsive layout (mobile-first)
@@ -69,6 +44,29 @@ This responsive, accessible, and modern portfolio site was created using:
 - Accessible and semantic HTML structure
 - Downloadable CV
 - Contact form for easy communication
+- **Light/Dark mode toggle** for user preference
+- **Subtle fade-in animations** for modern feel
+
+---
+
+## 🛠️ Development Process & Project Management
+
+This project follows a simple, transparent workflow using GitHub's built-in tools:
+
+### 1. GitHub Project Board
+- Go to your repository on GitHub.
+- Click on the "Projects" tab and create a new board (e.g., "Portfolio Development").
+- Add columns like "To Do", "In Progress", and "Done".
+- Create cards for each feature, bug, or improvement.
+
+### 2. Issues
+- Use GitHub Issues to track bugs, feature requests, and tasks.
+- Link issues to Project board cards for better tracking.
+
+### 3. Workflow Documentation
+Each new feature starts as an Issue, is added to the Project board, and is closed via Pull Request."
+
+---
 
 ---
 
@@ -80,23 +78,15 @@ This responsive, accessible, and modern portfolio site was created using:
 git clone https://github.com/chibeauty/portfolio-site.git
 Navigate into the Project
 
-bash
-Copy
-Edit
 cd portfolio-site
 Open with Live Server or Your Browser
 
-bash
-Copy
-Edit
 # If using VS Code
 Open with Live Server extension
 
 # Or just open index.html directly
 📁 Folder Structure (Expected)
-bash
-Copy
-Edit
+
 /portfolio-site
 │
 ├── images/
@@ -118,9 +108,6 @@ Frontend Developer | Software Engineering Student
 📜 License
 This project is licensed under the MIT License - feel free to use and customize it for your own portfolio.
 
-php-template
-Copy
-Edit
 
 ---
 
@@ -150,9 +137,6 @@ Add comments to indicate the purpose of each section:
 CSS
 Use comment headers to break down styles into logical sections:
 
-css
-Copy
-Edit
 /* -------------------------
    GLOBAL RESET & BASE STYLES
 ---------------------------- */

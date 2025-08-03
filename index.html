@@ -7,21 +7,35 @@
     <meta name="keywords" content="Gloria Ngwu, portfolio, web developer, software engineer, projects, skills, contact">
     <meta name="author" content="Gloria Ngwu">
     <title>GLORIA NGWU - Portfolio</title>
+    <!-- Minimal CSS framework for enhanced base styling -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2.0.6/css/pico.min.css">
     <style>
+        /* =========================
+           GLOBAL RESET & BASE STYLES
+        ========================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Body base styles (override Pico defaults as needed) */
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.7;
             color: #23272f;
             background: #f4f6fa;
             min-height: 100vh;
+            transition: background 0.4s, color 0.4s;
         }
 
+        /* Dark mode styles */
+        body.dark-mode {
+            background: #181a20;
+            color: #e5e7eb;
+        }
+
+        /* Container for layout */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -29,6 +43,9 @@
         }
 
         /* Header Styles */
+        /* =========================
+           HEADER & NAVIGATION
+        ========================== */
         header {
             background: #2563eb;
             box-shadow: 0 2px 16px 0 rgba(37, 99, 235, 0.07);
@@ -40,6 +57,9 @@
             border-bottom: none;
             transition: background 0.3s, box-shadow 0.3s;
         }
+        body.dark-mode header {
+            background: #23272f;
+        }
 
         nav {
             display: flex;
@@ -47,6 +67,7 @@
             align-items: center;
         }
 
+        /* Logo styles */
         .logo {
             font-size: 2rem;
             font-weight: 900;
@@ -88,8 +109,18 @@
             -webkit-text-fill-color: #2563eb;
             background-clip: initial;
         }
+        body.dark-mode .nav-links a {
+            color: #e5e7eb;
+        }
+        body.dark-mode .nav-links a:hover {
+            color: #23272f;
+            background: #e5e7eb;
+        }
 
         /* Hero Section */
+        /* =========================
+           HERO SECTION
+        ========================== */
         .hero {
             min-height: 95vh;
             display: flex;
@@ -102,6 +133,10 @@
             /* Neon gradient background with image overlay */
             background: linear-gradient(135deg, #00ffe7 0%, #8f00ff 50%, #ff00cc 100%), url('hero-bg.jpg') center center/cover no-repeat;
             box-shadow: 0 8px 32px rgba(37,99,235,0.08);
+        }
+        body.dark-mode .hero {
+            color: #e5e7eb;
+            background: linear-gradient(135deg, #23272f 0%, #181a20 100%), url('hero-bg.jpg') center center/cover no-repeat;
         }
 
         .hero::before {
@@ -123,6 +158,12 @@
             max-width: 700px;
             margin: 3.5rem auto 2rem auto;
             min-height: 420px;
+            /* Fade-in animation for hero */
+            opacity: 0;
+            animation: fadeInSection 1.2s 0.2s forwards;
+        }
+        body.dark-mode .hero-content {
+            background: #23272f;
         }
 
         .hero-profile {
@@ -176,21 +217,36 @@
         }
 
         /* Section Styles */
+        /* =========================
+           SECTION STYLES
+        ========================== */
         section {
             padding: 80px 0;
             background: white;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInSection 1.1s forwards;
         }
-
         section:nth-child(even) {
             background: #f8f9fa;
         }
+        body.dark-mode section {
+            background: #181a20;
+        }
+        body.dark-mode section:nth-child(even) {
+            background: #23272f;
+        }
 
+        /* Section title styles */
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
             color: #333;
             position: relative;
+        }
+        body.dark-mode .section-title {
+            color: #e5e7eb;
         }
 
         .section-title::after {
@@ -203,7 +259,9 @@
             border-radius: 2px;
         }
 
-        /* About Section */
+        /* =========================
+           ABOUT SECTION
+        ========================== */
         .about-content {
             display: flex;
             flex-wrap: wrap;
@@ -244,7 +302,9 @@
             font-weight: 700;
         }
 
-        /* Skills Section */
+        /* =========================
+           SKILLS SECTION
+        ========================== */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -284,7 +344,9 @@
             font-weight: 500;
         }
 
-        /* Education Section */
+        /* =========================
+           EDUCATION SECTION
+        ========================== */
         .education-card {
             background: white;
             padding: 2rem;
@@ -330,7 +392,9 @@
             transform: translateY(-2px);
         }
 
-        /* Interests Section */
+        /* =========================
+           INTERESTS SECTION
+        ========================== */
         .interests-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -361,7 +425,9 @@
             margin-bottom: 1rem;
         }
 
-        /* Projects Section */
+        /* =========================
+           PROJECTS SECTION
+        ========================== */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -374,10 +440,34 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            display: block;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+        }
+
+        /* Project filter buttons */
+        .project-filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+        .project-filter-btn {
+            background: #fff;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .project-filter-btn.active,
+        .project-filter-btn:hover {
+            background: #2563eb;
+            color: #fff;
         }
 
         .project-image {
@@ -410,7 +500,9 @@
             color: #2563eb;
         }
 
-        /* Contact Section */
+        /* =========================
+           CONTACT SECTION
+        ========================== */
         .contact-content {
             max-width: 600px;
             margin: 0 auto;
@@ -472,7 +564,9 @@
             transform: translateY(-2px);
         }
 
-        /* Footer */
+        /* =========================
+           FOOTER
+        ========================== */
         footer {
             background: #2563eb;
             color: #fff;
@@ -504,7 +598,9 @@
             filter: drop-shadow(0 2px 8px rgba(255,255,255,0.18));
         }
 
-        /* Animations */
+        /* =========================
+           ANIMATIONS
+        ========================== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -515,8 +611,20 @@
                 transform: translateY(0);
             }
         }
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        /* Responsive Design */
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -557,14 +665,61 @@
             }
         }
 
-        /* Smooth Scrolling */
+        /* =========================
+           SMOOTH SCROLLING
+        ========================== */
         html {
             scroll-behavior: smooth;
+        }
+
+        /* =========================
+           LIGHT/DARK MODE TOGGLE BUTTON
+        ========================== */
+        .toggle-mode-btn {
+            position: fixed;
+            top: 22px;
+            right: 32px;
+            z-index: 2000;
+            background: #fff;
+            color: #23272f;
+            border: 2px solid #2563eb;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+            transition: background 0.3s, color 0.3s;
+        }
+        .toggle-mode-btn:hover {
+            background: #2563eb;
+            color: #fff;
+        }
+        body.dark-mode .toggle-mode-btn {
+            background: #23272f;
+            color: #e5e7eb;
+            border-color: #e5e7eb;
         }
 
 </style>
 </head>
 <body>
+    <!--
+      =========================
+      LIGHT/DARK MODE TOGGLE BUTTON
+      =========================
+    -->
+    <button class="toggle-mode-btn" id="toggleModeBtn" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
+      <!-- Sun/Moon icon will be set by JS -->
+      <span id="toggleModeIcon">🌙</span>
+    </button>
+
+    <!-- =========================
+         HEADER & NAVIGATION
+    ========================== -->
     <header role="banner">
         <nav class="container" aria-label="Main Navigation">
             <a href="#" class="logo" aria-label="Home">GLORIA NGWU</a>
@@ -579,7 +734,11 @@
         </nav>
     </header>
 
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
     <main id="main-content">
+        <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-heading">
             <div class="hero-content">
                 <figure class="hero-profile">
@@ -591,6 +750,7 @@
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about" aria-labelledby="about-heading">
             <div class="container about-content">
                 <figure class="profile-image">
@@ -615,6 +775,7 @@
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills" aria-labelledby="skills-heading">
             <div class="container">
                 <h2 id="skills-heading" class="section-title">Programming Languages & Skills</h2>
@@ -659,6 +820,7 @@
             </div>
         </section>
 
+        <!-- Education Section -->
         <section id="education" aria-labelledby="education-heading">
             <div class="container">
                 <h2 id="education-heading" class="section-title">Educational Background</h2>
@@ -680,6 +842,7 @@
             </div>
         </section>
 
+        <!-- Interests Section -->
         <section id="interests" aria-labelledby="interests-heading">
             <div class="container">
                 <h2 id="interests-heading" class="section-title">Interests</h2>
@@ -709,11 +872,19 @@
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" aria-labelledby="projects-heading">
             <div class="container">
                 <h2 id="projects-heading" class="section-title">Projects</h2>
+                <!-- Project filter buttons -->
+                <div class="project-filters">
+                    <button class="project-filter-btn active" data-filter="all" type="button">All</button>
+                    <button class="project-filter-btn" data-filter="frontend" type="button">Frontend</button>
+                    <button class="project-filter-btn" data-filter="html" type="button">HTML</button>
+                    <button class="project-filter-btn" data-filter="portfolio" type="button">Portfolio</button>
+                </div>
                 <div class="projects-grid">
-                    <article class="project-card">
+                    <article class="project-card" data-category="frontend">
                         <figure class="project-image" style="padding:0; height:200px; background:#fff;">
                             <img src="project1.jpg" alt="Basic calculator screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
                         </figure>
@@ -723,7 +894,7 @@
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </article>
-                    <article class="project-card">
+                    <article class="project-card" data-category="html">
                         <figure class="project-image" style="padding:0; height:200px; background:#fff;">
                             <img src="project2.jpg" alt="HTML5 semantic tags project screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
                         </figure>
@@ -733,7 +904,7 @@
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </article>
-                    <article class="project-card">
+                    <article class="project-card" data-category="portfolio">
                         <figure class="project-image" style="padding:0; height:200px; background:#fff;">
                             <img src="project3.jpg" alt="Personal Portfolio Website screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
                         </figure>
@@ -747,6 +918,7 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" aria-labelledby="contact-heading">
             <div class="container">
                 <h2 id="contact-heading" class="section-title">Contact Me</h2>
@@ -804,6 +976,9 @@
         </section>
     </main>
 
+    <!-- =========================
+         FOOTER
+    ========================== -->
     <footer role="contentinfo">
         <div class="container">
             <nav class="social-links" aria-label="Social Media Links">
@@ -823,5 +998,79 @@
             <p>&copy; 2025 GLORIA NGWU. All rights reserved.</p>
         </div>
     </footer>
+<script>
+// ...existing code...
+
+// Project filtering logic
+const filterBtns = document.querySelectorAll('.project-filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Remove active from all
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
+    projectCards.forEach(card => {
+      if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
 </body>
+<!-- =========================
+     LIGHT/DARK MODE TOGGLE SCRIPT
+========================== -->
+<script>
+// Light/Dark mode toggle logic
+const toggleBtn = document.getElementById('toggleModeBtn');
+const iconSpan = document.getElementById('toggleModeIcon');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const savedMode = localStorage.getItem('themeMode');
+
+function setMode(dark) {
+  if (dark) {
+    document.body.classList.add('dark-mode');
+    iconSpan.textContent = '☀️';
+    toggleBtn.title = 'Switch to light mode';
+  } else {
+    document.body.classList.remove('dark-mode');
+    iconSpan.textContent = '🌙';
+    toggleBtn.title = 'Switch to dark mode';
+  }
+}
+
+// Initial mode
+if (savedMode === 'dark' || (!savedMode && prefersDark)) {
+  setMode(true);
+} else {
+  setMode(false);
+}
+
+toggleBtn.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark-mode');
+  setMode(isDark);
+  localStorage.setItem('themeMode', isDark ? 'dark' : 'light');
+});
+
+// Fade-in animation for all sections on scroll
+const sections = document.querySelectorAll('section');
+const fadeInOnScroll = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+};
+const observer = new IntersectionObserver(fadeInOnScroll, { threshold: 0.15 });
+sections.forEach(section => {
+  observer.observe(section);
+});
+</script>
 </html>
