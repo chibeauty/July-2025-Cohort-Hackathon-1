@@ -24,11 +24,20 @@ This responsive, accessible, and modern portfolio site was created using:
 ---
 
 
+
 ## 📸 Screenshots
 
 Added screenshots of my site here:
 
 ![Home Page Screenshot](./project3.jpg)
+
+### 📋 Project Management Board & Issues
+
+Below is a screenshot of my active GitHub Project board, which tracks features, bugs, and progress. Issues are linked to cards for transparency and collaboration.
+
+![Project Board Screenshot](./project-board-screenshot.png)
+
+> You can view the live board and issues at: [GitHub Project Board](https://github.com/chibeauty/July-2025-Cohort-Hackathon-1/projects) and [Issues](https://github.com/chibeauty/July-2025-Cohort-Hackathon-1/issues)
 
 ## 🌐 Live Demo
 
