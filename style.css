@@ -41,12 +41,56 @@
 
 @media (max-width: 700px) {
   #about-heading {
-    font-size: 1.5rem;
-    margin-bottom: 0.7rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
   }
   #about-heading::after {
-    width: 36px;
-    height: 3px;
+    width: 28px;
+    height: 2px;
+  }
+  .section-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .section-title::after {
+    width: 24px;
+    height: 2px;
+  }
+  footer {
+    border-radius: 1rem 1rem 0 0;
+    padding: 0.7rem 0 0.5rem 0;
+  }
+  .social-links {
+    gap: 0.5rem;
+  }
+  .social-links a {
+    width: 28px;
+    height: 28px;
+  }
+  .social-links svg {
+    width: 18px;
+    height: 18px;
+  }
+  .hero, #about, #skills, #education, #interests, #projects, #contact {
+    padding: 0.7rem 0.1rem;
+    border-radius: 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+  .hero-image, .about-profile-img {
+    width: 60px;
+    height: 60px;
+  }
+  .profile-image {
+    width: 80px;
+    height: 80px;
+  }
+  .about-content, .skills-grid, .interests-grid, .projects-grid {
+    flex-direction: column !important;
+    gap: 0.7rem !important;
+  }
+  .project-img, .interest-img {
+    max-width: 100%;
+    height: auto;
   }
 }
 /* =========================
@@ -128,12 +172,12 @@
 
 @media (max-width: 700px) {
   .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.7rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
   }
   .section-title::after {
-    width: 36px;
-    height: 3px;
+    width: 24px;
+    height: 2px;
   }
 }
 /* =========================
@@ -191,19 +235,19 @@ footer p {
 
 @media (max-width: 700px) {
   footer {
-    border-radius: 1.2rem 1.2rem 0 0;
-    padding: 1.2rem 0 0.7rem 0;
+    border-radius: 1rem 1rem 0 0;
+    padding: 0.7rem 0 0.5rem 0;
   }
   .social-links {
-    gap: 0.7rem;
+    gap: 0.5rem;
   }
   .social-links a {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
   }
   .social-links svg {
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
   }
 }
 /* =========================
@@ -572,20 +616,105 @@ footer p {
 
 @media (max-width: 900px) {
   .skills-grid, .interests-grid, .projects-grid, .contact-content {
-    flex-direction: column;
-    gap: 1.2rem;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .project-card, .interest-card, .skill-category, .education-card, .contact-address, .contact-form {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  header {
+    padding: 0.7rem 0;
+  }
+  .logo {
+    font-size: 1.1rem;
+  }
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .about-content {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 0.7rem !important;
+  }
+  .section-title {
+    font-size: 1.1rem;
+  }
+  .skills-grid,
+  .interests-grid,
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+    gap: 0.7rem !important;
+  }
+  .hero-image {
+    width: 60px;
+    height: 60px;
   }
 }
 
 @media (max-width: 700px) {
+  #about-heading {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  #about-heading::after {
+    width: 28px;
+    height: 2px;
+  }
+  .section-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .section-title::after {
+    width: 24px;
+    height: 2px;
+  }
+  footer {
+    border-radius: 1rem 1rem 0 0;
+    padding: 0.7rem 0 0.5rem 0;
+  }
+  .social-links {
+    gap: 0.5rem;
+  }
+  .social-links a {
+    width: 28px;
+    height: 28px;
+  }
+  .social-links svg {
+    width: 18px;
+    height: 18px;
+  }
   .hero, #about, #skills, #education, #interests, #projects, #contact {
-    padding: 1.2rem 0.3rem;
-    border-radius: 1.2rem;
-    margin-bottom: 1.2rem;
+    padding: 0.7rem 0.1rem;
+    border-radius: 0.7rem;
+    margin-bottom: 0.7rem;
   }
   .hero-image, .about-profile-img {
+    width: 60px;
+    height: 60px;
+  }
+  .profile-image {
     width: 80px;
     height: 80px;
+  }
+  .about-content, .skills-grid, .interests-grid, .projects-grid {
+    flex-direction: column !important;
+    gap: 0.7rem !important;
+  }
+  .project-img, .interest-img {
+    max-width: 100%;
+    height: auto;
   }
 }
 /* =========================
@@ -1318,4 +1447,18 @@ footer {
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
