@@ -7,790 +7,12 @@
     <meta name="keywords" content="Gloria Ngwu, portfolio, web developer, software engineer, projects, skills, contact">
     <meta name="author" content="Gloria Ngwu">
     <title>GLORIA NGWU - Portfolio</title>
-    <!-- Minimal CSS framework for enhanced base styling -->
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2.0.6/css/pico.min.css">
-    <style>
-        /* =========================
-           GLOBAL RESET & BASE STYLES
-        ========================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        /* Body base styles (override Pico defaults as needed) */
-        body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            color: #23272f;
-            background: #f4f6fa;
-            min-height: 100vh;
-            transition: background 0.4s, color 0.4s;
-        }
-
-        /* Dark mode styles */
-        body.dark-mode {
-            background: #181a20;
-            color: #e5e7eb;
-        }
-
-        /* Container for layout */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header Styles */
-        /* =========================
-           HEADER & NAVIGATION
-        ========================== */
-        header {
-            background: #2563eb;
-            box-shadow: 0 2px 16px 0 rgba(37, 99, 235, 0.07);
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.1rem 0;
-            border-bottom: none;
-            transition: background 0.3s, box-shadow 0.3s;
-        }
-        body.dark-mode header {
-            background: #23272f;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Logo styles */
-        .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #fff;
-            text-decoration: none;
-            letter-spacing: 2px;
-            text-shadow: none;
-            background: none;
-            -webkit-background-clip: initial;
-            -webkit-text-fill-color: #fff;
-            background-clip: initial;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s, background 0.3s, box-shadow 0.3s;
-            font-weight: 600;
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-size: 1.05rem;
-            text-shadow: none;
-            background: none;
-            -webkit-background-clip: initial;
-            -webkit-text-fill-color: #fff;
-            background-clip: initial;
-        }
-
-        .nav-links a:hover {
-            color: #2563eb;
-            background: #fff;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.10);
-            -webkit-text-fill-color: #2563eb;
-            background-clip: initial;
-        }
-        body.dark-mode .nav-links a {
-            color: #e5e7eb;
-        }
-        body.dark-mode .nav-links a:hover {
-            color: #23272f;
-            background: #e5e7eb;
-        }
-
-        /* Hero Section */
-        /* =========================
-           HERO SECTION
-        ========================== */
-        .hero {
-            min-height: 95vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #23272f;
-            position: relative;
-            overflow: hidden;
-            /* Neon gradient background with image overlay */
-            background: linear-gradient(135deg, #00ffe7 0%, #8f00ff 50%, #ff00cc 100%), url('hero-bg.jpg') center center/cover no-repeat;
-            box-shadow: 0 8px 32px rgba(37,99,235,0.08);
-        }
-        body.dark-mode .hero {
-            color: #e5e7eb;
-            background: linear-gradient(135deg, #23272f 0%, #181a20 100%), url('hero-bg.jpg') center center/cover no-repeat;
-        }
-
-        .hero::before {
-            /* Remove the old dark overlay, as the gradient now covers it */
-            display: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #fff;
-            padding: 2.5rem 2rem;
-            border-radius: 22px;
-            box-shadow: 0 6px 32px rgba(37,99,235,0.10);
-            max-width: 700px;
-            margin: 3.5rem auto 2rem auto;
-            min-height: 420px;
-            /* Fade-in animation for hero */
-            opacity: 0;
-            animation: fadeInSection 1.2s 0.2s forwards;
-        }
-        body.dark-mode .hero-content {
-            background: #23272f;
-        }
-
-        .hero-profile {
-            margin-bottom: 2rem;
-        }
-
-        .hero-image {
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 6px solid #2563eb;
-            box-shadow: 0 8px 32px rgba(37,99,235,0.15);
-            background: #e0e7ff;
-        }
-
-        .hero h1 {
-            font-size: 2.7rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            color: #2563eb;
-            background: none;
-            text-shadow: none;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            color: #23272f;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(90deg, #2563eb 0%, #764ba2 100%);
-            color: #fff;
-            padding: 12px 32px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.05rem;
-            letter-spacing: 1px;
-            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-            box-shadow: 0 4px 16px rgba(37,99,235,0.13);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px) scale(1.03);
-            background: linear-gradient(90deg, #764ba2 0%, #2563eb 100%);
-            box-shadow: 0 8px 24px rgba(37,99,235,0.18);
-        }
-
-        /* Section Styles */
-        /* =========================
-           SECTION STYLES
-        ========================== */
-        section {
-            padding: 80px 0;
-            background: white;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: fadeInSection 1.1s forwards;
-        }
-        section:nth-child(even) {
-            background: #f8f9fa;
-        }
-        body.dark-mode section {
-            background: #181a20;
-        }
-        body.dark-mode section:nth-child(even) {
-            background: #23272f;
-        }
-
-        /* Section title styles */
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-        body.dark-mode .section-title {
-            color: #e5e7eb;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: #2563eb;
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-
-        /* =========================
-           ABOUT SECTION
-        ========================== */
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            align-items: flex-start;
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 4px 18px rgba(37,99,235,0.08);
-            padding: 2.5rem 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .profile-image {
-            width: 340px;
-            height: 340px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #e0e7ff 60%, #c7d2fe 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            box-shadow: 0 8px 32px rgba(37,99,235,0.13);
-            border: 5px solid #2563eb;
-            overflow: hidden;
-        }
-
-        .about-text {
-            font-size: 1.08rem;
-            line-height: 1.8;
-            color: #23272f;
-            max-width: 600px;
-            text-align: justify;
-        }
-
-        .about-text h3 {
-            color: #2563eb;
-            margin-bottom: 1.2rem;
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        /* =========================
-           SKILLS SECTION
-        ========================== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-category h3 {
-            color: #2563eb;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: #2563eb;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* =========================
-           EDUCATION SECTION
-        ========================== */
-        .education-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-            border-left: 4px solid #2563eb;
-        }
-
-        .education-card h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .university {
-            color: #2563eb;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .year {
-            color: #666;
-            font-style: italic;
-        }
-
-        .cv-download {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .download-btn {
-            background: #2563eb;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-            display: inline-block;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           INTERESTS SECTION
-        ========================== */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .interest-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .interest-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .interest-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #2563eb;
-        }
-
-        .interest-card h3 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        /* =========================
-           PROJECTS SECTION
-        ========================== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            display: block;
-            cursor: pointer;
-        }
-
-        /* Modal styles */
-        .modal-backdrop {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.45);
-            z-index: 3000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-backdrop.active {
-            display: flex;
-        }
-        .project-modal {
-            background: #fff;
-            color: #23272f;
-            border-radius: 18px;
-            max-width: 420px;
-            width: 95vw;
-            box-shadow: 0 8px 32px rgba(37,99,235,0.18);
-            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
-            position: relative;
-            animation: fadeInUp 0.4s;
-        }
-        .project-modal-details {
-            margin-top: 1.1rem;
-            font-size: 1.01rem;
-            color: #444;
-        }
-        body.dark-mode .project-modal-details {
-            color: #cbd5e1;
-        }
-        .project-modal h3 {
-            margin-top: 0;
-        }
-        .modal-close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.7rem;
-            color: #2563eb;
-            cursor: pointer;
-        }
-        body.dark-mode .project-modal {
-            background: #23272f;
-            color: #e5e7eb;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Project filter buttons */
-        .project-filters {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2.5rem;
-        }
-        /* Ripple effect for buttons */
-        .ripple {
-            position: relative;
-            overflow: hidden;
-        }
-        .ripple-effect {
-            position: absolute;
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple 0.5s linear;
-            background: rgba(37,99,235,0.25);
-            pointer-events: none;
-        }
-        @keyframes ripple {
-            to {
-                transform: scale(2.5);
-                opacity: 0;
-            }
-        }
-        .project-filter-btn {
-            background: #fff;
-            color: #2563eb;
-            border: 2px solid #2563eb;
-            border-radius: 30px;
-            padding: 0.5rem 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-        }
-        .project-filter-btn.active,
-        .project-filter-btn:hover {
-            background: #2563eb;
-            color: #fff;
-        }
-
-        .project-image {
-            height: 200px;
-            background: #2563eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content h3 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .project-link {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: #2563eb;
-        }
-
-        /* =========================
-           CONTACT SECTION
-        ========================== */
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e1e5e9;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #2563eb;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: #2563eb;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           FOOTER
-        ========================== */
-        footer {
-            background: #2563eb;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .social-links {
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2.2rem;
-        }
-
-        .social-links a {
-            color: #fff;
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: color 0.3s ease, transform 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.2rem;
-        }
-
-        .social-links a:hover svg {
-            transform: scale(1.18);
-            filter: drop-shadow(0 2px 8px rgba(255,255,255,0.18));
-        }
-
-        /* =========================
-           ANIMATIONS
-        ========================== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes fadeInSection {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* =========================
-           RESPONSIVE DESIGN
-        ========================== */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            header {
-                padding: 0.7rem 0;
-            }
-            .logo {
-                font-size: 1.3rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .skills-grid,
-            .interests-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-image {
-                width: 110px;
-                height: 110px;
-            }
-        }
-
-        /* =========================
-           SMOOTH SCROLLING
-        ========================== */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* =========================
-           LIGHT/DARK MODE TOGGLE BUTTON
-        ========================== */
-        .toggle-mode-btn {
-            position: fixed;
-            top: 22px;
-            right: 32px;
-            z-index: 2000;
-            background: #fff;
-            color: #23272f;
-            border: 2px solid #2563eb;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(37,99,235,0.10);
-            transition: background 0.3s, color 0.3s;
-        }
-        .toggle-mode-btn:hover {
-            background: #2563eb;
-            color: #fff;
-        }
-        body.dark-mode .toggle-mode-btn {
-            background: #23272f;
-            color: #e5e7eb;
-            border-color: #e5e7eb;
-        }
-
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!--
-      =========================
-      LIGHT/DARK MODE TOGGLE BUTTON
-      =========================
-    -->
-    <button class="toggle-mode-btn" id="toggleModeBtn" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
-      <!-- Sun/Moon icon will be set by JS -->
-      <span id="toggleModeIcon">🌙</span>
-    </button>
-
-    <!-- =========================
-         HEADER & NAVIGATION
-    ========================== -->
+<!-- =========================
+     HEADER & NAVIGATION
+========================== -->
     <header role="banner">
         <nav class="container" aria-label="Main Navigation">
             <a href="#" class="logo" aria-label="Home">GLORIA NGWU</a>
@@ -809,23 +31,27 @@
          MAIN CONTENT
     ========================== -->
     <main id="main-content">
-        <!-- Hero Section -->
+        <!-- =========================
+             HERO SECTION
+        ========================== -->
         <section class="hero" aria-labelledby="hero-heading">
             <div class="hero-content">
                 <figure class="hero-profile">
                     <img src="profile.jpg" alt="Portrait of Gloria Ngwu" class="hero-image" />
                 </figure>
-                <h1 id="hero-heading" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; text-align: center; font-size: 2.2rem; font-weight: 800; color: #2563eb; margin-bottom: 1rem;">Hello, I am GLORIA NGWU</h1>
+                <h1 id="hero-heading" class="hero-title">Hello, I am GLORIA NGWU</h1>
                 <p>A passionate web developer creating functional and beautiful digital experiences that make a difference.</p>
                 <a href="#about" class="cta-button">Learn More About Me</a>
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- =========================
+             ABOUT SECTION
+        ========================== -->
         <section id="about" aria-labelledby="about-heading">
             <div class="container about-content">
                 <figure class="profile-image">
-                    <img src="About-me-picture.jpg" alt="Gloria Ngwu profile" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;" />
+                    <img src="About-me-picture.jpg" alt="Gloria Ngwu profile" class="about-profile-img" />
                 </figure>
                 <div class="about-text">
                     <h2 id="about-heading">About Me</h2>
@@ -834,7 +60,7 @@
                         I am Gloria Ngwu, a software engineering student with a passion for crafting engaging, accessible, and responsive web interfaces.
                     </p>
                     <p>
-                        I love exploring how things work sometimes by intentionally breaking them just to figure out how to build them better. My primary tools are JavaScript, React, and Tailwind CSS, which I use daily to create sleek and performant user experiences.
+                        I love exploring how things work sometimes by intentionally breaking them just to figure out how to build them better. My primary tools are HTML and CSS, which I use daily to create sleek and performant user experiences.
                     </p>
                     <p>
                         I am currently deepening my front-end expertise while beginning to explore the backend to better understand full-stack workflows. I am especially interested in creating web applications that not only look good but also feel intuitive and functional across all devices.
@@ -846,7 +72,9 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- =========================
+             SKILLS SECTION
+        ========================== -->
         <section id="skills" aria-labelledby="skills-heading">
             <div class="container">
                 <h2 id="skills-heading" class="section-title">Programming Languages & Skills</h2>
@@ -854,7 +82,7 @@
                     <section class="skill-category" aria-labelledby="frontend-heading">
                         <h3 id="frontend-heading">Frontend Development</h3>
                         <ul class="skill-tags">
-                            <li class="skill-tag">JavaScript</li>
+
                             <li class="skill-tag">TypeScript</li>
                             <li class="skill-tag">React</li>
                             <li class="skill-tag">Vue.js</li>
@@ -891,7 +119,9 @@
             </div>
         </section>
 
-        <!-- Education Section -->
+        <!-- =========================
+             EDUCATION SECTION
+        ========================== -->
         <section id="education" aria-labelledby="education-heading">
             <div class="container">
                 <h2 id="education-heading" class="section-title">Educational Background</h2>
@@ -913,28 +143,30 @@
             </div>
         </section>
 
-        <!-- Interests Section -->
+        <!-- =========================
+             INTERESTS SECTION
+        ========================== -->
         <section id="interests" aria-labelledby="interests-heading">
             <div class="container">
                 <h2 id="interests-heading" class="section-title">Interests</h2>
                 <div class="interests-grid">
                     <article class="interest-card">
                         <figure class="interest-icon">
-                            <img src="interest1.jpg" alt="Web Development Screenshot" style="width: 110px; height: 110px; object-fit: cover; border-radius: 16px; box-shadow: 0 4px 16px rgba(37,99,235,0.16); background: #e0e7ff;" />
+                        <img src="interest1.jpg" alt="Web Development Screenshot" class="interest-img" />
                         </figure>
                         <h3>Web Development</h3>
-                        <p>Exploring modern frameworks and best practices. I'm passionate about creating responsive, accessible, and performant web applications that provide exceptional user experiences.</p>
+                        <p>Exploring modern best practices. I'm passionate about creating responsive, accessible, and performant web applications that provide exceptional user experiences.</p>
                     </article>
                     <article class="interest-card">
                         <figure class="interest-icon">
-                            <img src="interest2.jpg" alt="Tech Innovations Screenshot" style="width: 110px; height: 110px; object-fit: cover; border-radius: 16px; box-shadow: 0 4px 16px rgba(37,99,235,0.16); background: #e0e7ff;" />
+                        <img src="interest2.jpg" alt="Tech Innovations Screenshot" class="interest-img" />
                         </figure>
                         <h3>Tech Innovations</h3>
                         <p>Keeping up with emerging trends in technology. From AI and machine learning to blockchain and IoT, I love exploring how new technologies can solve real-world problems.</p>
                     </article>
                     <article class="interest-card">
                         <figure class="interest-icon">
-                            <img src="interest3.jpg" alt="UI/UX Design Screenshot" style="width: 110px; height: 110px; object-fit: cover; border-radius: 16px; box-shadow: 0 4px 16px rgba(37,99,235,0.16); background: #e0e7ff;" />
+                        <img src="interest3.jpg" alt="UI/UX Design Screenshot" class="interest-img" />
                         </figure>
                         <h3>UI/UX Design</h3>
                         <p>Creating intuitive and beautiful user interfaces. I believe great design is about more than aesthetics—it's about creating meaningful connections between users and technology.</p>
@@ -943,20 +175,23 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- =========================
+             PROJECTS SECTION
+        ========================== -->
         <section id="projects" aria-labelledby="projects-heading">
             <div class="container">
                 <h2 id="projects-heading" class="section-title">Projects</h2>
                 <!-- Animated project stats -->
-                <div style="display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                  <div style="background: #2563eb; color: #fff; border-radius: 18px; padding: 1.1rem 2.2rem; font-size: 2.1rem; font-weight: 700; box-shadow: 0 2px 12px rgba(37,99,235,0.10); min-width: 120px; text-align: center;">
-                    <span id="projectCounter" aria-label="Number of projects">0</span> <span style="font-size:1.1rem; font-weight:400;">Projects</span>
+                <!-- Project stats (static, CSS-only) -->
+                <div class="project-stats">
+                  <div class="project-stat">
+                    <span class="stat-number">3</span> <span class="stat-label">Projects</span>
                   </div>
-                  <div style="background: #2563eb; color: #fff; border-radius: 18px; padding: 1.1rem 2.2rem; font-size: 2.1rem; font-weight: 700; box-shadow: 0 2px 12px rgba(37,99,235,0.10); min-width: 120px; text-align: center;">
-                    <span id="techCounter" aria-label="Technologies used">0</span> <span style="font-size:1.1rem; font-weight:400;">Technologies</span>
+                  <div class="project-stat">
+                    <span class="stat-number">8</span> <span class="stat-label">Technologies</span>
                   </div>
-                  <div style="background: #2563eb; color: #fff; border-radius: 18px; padding: 1.1rem 2.2rem; font-size: 2.1rem; font-weight: 700; box-shadow: 0 2px 12px rgba(37,99,235,0.10); min-width: 120px; text-align: center;">
-                    <span id="expCounter" aria-label="Years of experience">0</span> <span style="font-size:1.1rem; font-weight:400;">Years Experience</span>
+                  <div class="project-stat">
+                    <span class="stat-number">2</span> <span class="stat-label">Years Experience</span>
                   </div>
                 </div>
                 <!-- Project filter buttons -->
@@ -967,9 +202,9 @@
                     <button class="project-filter-btn ripple" data-filter="portfolio" type="button">Portfolio</button>
                 </div>
                 <div class="projects-grid">
-                    <article class="project-card" data-category="frontend" data-title="Basic calculator" data-img="project1.jpg" data-description="A simple web-based calculator built with HTML, CSS, and JavaScript. Features include basic arithmetic operations and a user-friendly interface." data-link="#" data-details="<ul><li>Built with vanilla JS, HTML, CSS</li><li>Responsive keypad and display</li><li>Handles decimals and keyboard input</li></ul>">
-                        <figure class="project-image" style="padding:0; height:200px; background:#fff;">
-                            <img src="project1.jpg" alt="Basic calculator screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
+                    <article class="project-card" data-category="frontend" data-title="Basic calculator" data-img="project1.jpg" data-description="A simple web-based calculator built with HTML and CSS. Features include basic arithmetic operations and a user-friendly interface." data-link="#" data-details="<ul><li>Built with only HTML and CSS</li><li>Responsive keypad and display</li></ul>">
+                        <figure class="project-image">
+                            <img src="project1.jpg" alt="Basic calculator screenshot" class="project-img" />
                         </figure>
                         <div class="project-content">
                             <h3>Simple Basic Calculator</h3>
@@ -978,8 +213,8 @@
                         </div>
                     </article>
                     <article class="project-card" data-category="html" data-title="Basic web page using HTML5 semantic tags" data-img="project2.jpg" data-description="A simple web page demonstrating the use of HTML5 semantic tags for better structure and accessibility." data-link="#" data-details="<ul><li>Semantic tags: header, nav, main, section, footer</li><li>Accessible structure for screen readers</li><li>Clean, readable code</li></ul>">
-                        <figure class="project-image" style="padding:0; height:200px; background:#fff;">
-                            <img src="project2.jpg" alt="HTML5 semantic tags project screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
+                        <figure class="project-image">
+                            <img src="project2.jpg" alt="HTML5 semantic tags project screenshot" class="project-img" />
                         </figure>
                         <div class="project-content">
                             <h3>Basic web page using HTML5 semantic tags</h3>
@@ -987,9 +222,9 @@
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </article>
-                    <article class="project-card" data-category="portfolio" data-title="Personal Portfolio Website" data-img="project3.jpg" data-description="A personal portfolio website showcasing my projects, skills, and experience. Built with HTML, CSS, and JavaScript, it features a responsive design and smooth scrolling." data-link="#" data-details="<ul><li>Modern, responsive design</li><li>Light/dark mode toggle</li><li>Animated stats and project modal</li></ul>">
-                        <figure class="project-image" style="padding:0; height:200px; background:#fff;">
-                            <img src="project3.jpg" alt="Personal Portfolio Website screenshot" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
+                    <article class="project-card" data-category="portfolio" data-title="Personal Portfolio Website" data-img="project3.jpg" data-description="A personal portfolio website showcasing my projects, skills, and experience. Built with only HTML and CSS, it features a responsive design and smooth scrolling." data-link="#" data-details="<ul><li>Modern, responsive design</li></ul>">
+                        <figure class="project-image">
+                            <img src="project3.jpg" alt="Personal Portfolio Website screenshot" class="project-img" />
                         </figure>
                         <div class="project-content">
                             <h3>Personal Portfolio Website</h3>
@@ -999,46 +234,37 @@
                     </article>
                 </div>
                 <!-- Modal for project details -->
-                <div class="modal-backdrop" id="projectModalBackdrop" tabindex="-1" aria-modal="true" role="dialog" aria-label="Project details">
-                    <div class="project-modal" id="projectModal">
-                    <button class="modal-close-btn" id="closeProjectModal" aria-label="Close project details">&times;</button>
-                    <figure style="margin-bottom:1.2rem;">
-                      <img id="modalProjectImg" src="" alt="Project image" style="width:100%; border-radius:10px; max-height:180px; object-fit:cover;" />
-                    </figure>
-                    <h3 id="modalProjectTitle"></h3>
-                    <p id="modalProjectDesc"></p>
-                    <div class="project-modal-details" id="modalProjectDetails"></div>
-                    <a id="modalProjectLink" href="#" class="project-link" target="_blank" rel="noopener">View Project →</a>
-                  </div>
-                </div>
+                <!-- Modal for project details (not functional in pure HTML/CSS) -->
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- =========================
+             CONTACT SECTION
+        ========================== -->
         <section id="contact" aria-labelledby="contact-heading">
             <div class="container">
                 <h2 id="contact-heading" class="section-title">Contact Me</h2>
-                <div class="contact-content" style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; justify-content: center;">
-                    <address style="flex: 1 1 260px; min-width: 260px; max-width: 340px; background: #2563eb; color: #fff; border-radius: 12px; padding: 2rem 1.5rem; box-shadow: 0 6px 24px rgba(37,99,235,0.10); margin-bottom: 2rem; font-style: normal;">
-                        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                            <h3 style="margin-bottom: 1.2rem; font-size: 1.3rem;">Let’s Work Together</h3>
-                            <p style="margin-bottom: 1.5rem; font-size: 1.05rem;">If you’re looking for a reliable developer for your next project or have a job opportunity in mind, I’d love to hear from you. Reach out using the form or contact me directly:</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin: 1.5rem 0 1.5rem 0;">
-                                <a href="https://www.linkedin.com/in/gloria-chidima-ngwu" target="_blank" rel="noopener" aria-label="LinkedIn" style="display: flex; align-items: center; justify-content: center;">
+                <div class="contact-content">
+                    <address class="contact-address">
+                        <div class="address-inner">
+                            <h3 class="address-title">Let’s Work Together</h3>
+                            <p class="address-desc">If you’re looking for a reliable developer for your next project or have a job opportunity in mind, I’d love to hear from you. Reach out using the form or contact me directly:</p>
+                            <div class="address-links">
+                                <a href="https://www.linkedin.com/in/gloria-chidima-ngwu" target="_blank" rel="noopener" aria-label="LinkedIn" class="address-link">
                                     <!-- LinkedIn SVG (original color) -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 48 48" fill="none">
                                         <rect width="48" height="48" rx="8" fill="#0077B5"/>
                                         <path d="M34 12A4 4 0 0 1 38 16V32A4 4 0 0 1 34 36H14A4 4 0 0 1 10 32V16A4 4 0 0 1 14 12H34ZM17.34 32V21.34H13.96V32H17.34ZM15.16 19.2C16.13 19.2 16.86 18.47 16.86 17.5C16.86 16.53 16.13 15.8 15.16 15.8C14.19 15.8 13.46 16.53 13.46 17.5C13.46 18.47 14.19 19.2 15.16 19.2ZM36.04 32V26.94C36.04 23.24 33.96 21.34 30.94 21.34C29.14 21.34 28.02 22.32 27.54 23.22H27.48V21.34H24.1V32H27.48V27.74C27.48 25.98 28.26 25.06 29.74 25.06C31.2 25.06 31.98 25.98 31.98 27.74V32H36.04Z" fill="white"/>
                                     </svg>
                                 </a>
-                                <a href="https://github.com/chibeauty" target="_blank" rel="noopener" aria-label="GitHub" style="display: flex; align-items: center; justify-content: center;">
+                                <a href="https://github.com/chibeauty" target="_blank" rel="noopener" aria-label="GitHub" class="address-link">
                                     <!-- GitHub SVG (original color) -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 48 48" fill="none">
                                         <circle cx="24" cy="24" r="24" fill="#181717"/>
                                         <path d="M24 8C15.16 8 8 15.36 8 24.52C8 31.4 12.84 37.08 19.08 38.92C19.88 39.08 20.16 38.6 20.16 38.2C20.16 37.84 20.14 36.96 20.14 35.96C15.6 36.92 14.68 33.92 14.68 33.92C13.96 32.12 13 31.68 13 31.68C11.6 30.72 13.12 30.74 13.12 30.74C14.68 30.86 15.5 32.36 15.5 32.36C16.88 34.68 19.12 34.04 20.04 33.64C20.2 32.68 20.6 32.04 21.04 31.68C17.32 31.28 13.36 29.36 13.36 23.92C13.36 22.36 13.92 21.08 14.88 20.08C14.72 19.72 14.24 18.36 15.04 16.64C15.04 16.64 16.32 16.28 20.12 18.44C21.32 18.12 22.6 17.96 23.88 17.96C25.16 17.96 26.44 18.12 27.64 18.44C31.44 16.28 32.72 16.64 32.72 16.64C33.52 18.36 33.04 19.72 32.88 20.08C33.84 21.08 34.4 22.36 34.4 23.92C34.4 29.38 30.44 31.28 26.72 31.68C27.28 32.12 27.76 33.04 27.76 34.36C27.76 36.16 27.74 37.64 27.74 38.2C27.74 38.6 28.02 39.08 28.82 38.92C35.06 37.08 39.9 31.4 39.9 24.52C39.9 15.36 32.84 8 24 8Z" fill="white"/>
                                     </svg>
                                 </a>
-                                <a href="mailto:gloriangwu45@gmail.com" aria-label="Email" style="display: flex; align-items: center; justify-content: center;">
+                                <a href="mailto:gloriangwu45@gmail.com" aria-label="Email" class="address-link">
                                     <!-- Email SVG (original color) -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 48 48" fill="none">
                                         <rect width="48" height="48" rx="8" fill="#EA4335"/>
@@ -1048,7 +274,7 @@
                             </div>
                         </div>
                     </address>
-                    <form class="contact-form" aria-label="Contact form" style="flex: 2 1 340px; min-width: 300px;">
+                    <form class="contact-form" aria-label="Contact form">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name">
@@ -1065,7 +291,7 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn" style="margin-top: 0.5rem;">Send Message</button>
+                        <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -1095,173 +321,4 @@
         </div>
     </footer>
 </body>
-<script>
-// Animated project stats logic
-const projectCounter = document.getElementById('projectCounter');
-const techCounter = document.getElementById('techCounter');
-const expCounter = document.getElementById('expCounter');
-const totalProjects = document.querySelectorAll('.project-card').length;
-const totalTechs = 12; // Example: JS, TS, React, Vue, HTML5, CSS3, Sass, Node, Python, Express, Django, PostgreSQL
-const yearsExp = 2; // Example: 2 years experience
-let counterStarted = false;
-function animateStat(el, end, duration) {
-  let current = 0;
-  const step = Math.max(1, Math.ceil(end / (duration / 24)));
-  function update() {
-    current += step;
-    if (current >= end) {
-      el.textContent = end;
-    } else {
-      el.textContent = current;
-      requestAnimationFrame(update);
-    }
-  }
-  update();
-}
-function animateCounters() {
-  animateStat(projectCounter, totalProjects, 900);
-  animateStat(techCounter, totalTechs, 900);
-  animateStat(expCounter, yearsExp, 900);
-}
-// Trigger animation when counter is visible
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !counterStarted) {
-      counterStarted = true;
-      animateCounters();
-      counterObserver.disconnect();
-    }
-  });
-}, { threshold: 0.5 });
-counterObserver.observe(projectCounter);
-
-// Button ripple effect
-document.querySelectorAll('.ripple').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    const circle = document.createElement('span');
-    circle.className = 'ripple-effect';
-    const rect = btn.getBoundingClientRect();
-    circle.style.left = (e.clientX - rect.left) + 'px';
-    circle.style.top = (e.clientY - rect.top) + 'px';
-    circle.style.width = circle.style.height = Math.max(rect.width, rect.height) + 'px';
-    btn.appendChild(circle);
-    setTimeout(() => circle.remove(), 500);
-  });
-});
-// ...existing code...
-
-// Project filtering logic
-const filterBtns = document.querySelectorAll('.project-filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    // Remove active from all
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.getAttribute('data-filter');
-    projectCards.forEach(card => {
-      if (filter === 'all' || card.getAttribute('data-category') === filter) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
-});
-
-// Project modal popup logic (with more details)
-const modalBackdrop = document.getElementById('projectModalBackdrop');
-const modal = document.getElementById('projectModal');
-const closeModalBtn = document.getElementById('closeProjectModal');
-const modalTitle = document.getElementById('modalProjectTitle');
-const modalImg = document.getElementById('modalProjectImg');
-const modalDesc = document.getElementById('modalProjectDesc');
-const modalLink = document.getElementById('modalProjectLink');
-const modalDetails = document.getElementById('modalProjectDetails');
-
-projectCards.forEach(card => {
-  card.addEventListener('click', e => {
-    // Prevent link click from triggering modal
-    if (e.target.closest('a')) return;
-    modalTitle.textContent = card.getAttribute('data-title');
-    modalImg.src = card.getAttribute('data-img');
-    modalImg.alt = card.getAttribute('data-title') + ' image';
-    modalDesc.textContent = card.getAttribute('data-description');
-    modalLink.href = card.getAttribute('data-link');
-    modalDetails.innerHTML = card.getAttribute('data-details') || '';
-    modalBackdrop.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    closeModalBtn.focus();
-  });
-});
-closeModalBtn.addEventListener('click', () => {
-  modalBackdrop.classList.remove('active');
-  document.body.style.overflow = '';
-});
-modalBackdrop.addEventListener('click', e => {
-  if (e.target === modalBackdrop) {
-    modalBackdrop.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-});
-document.addEventListener('keydown', e => {
-  if (modalBackdrop.classList.contains('active') && (e.key === 'Escape' || e.key === 'Esc')) {
-    modalBackdrop.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-});
-</script>
-</body>
-<!-- =========================
-     LIGHT/DARK MODE TOGGLE SCRIPT
-========================== -->
-<script>
-// Light/Dark mode toggle logic
-const toggleBtn = document.getElementById('toggleModeBtn');
-const iconSpan = document.getElementById('toggleModeIcon');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const savedMode = localStorage.getItem('themeMode');
-
-function setMode(dark) {
-  if (dark) {
-    document.body.classList.add('dark-mode');
-    iconSpan.textContent = '☀️';
-    toggleBtn.title = 'Switch to light mode';
-  } else {
-    document.body.classList.remove('dark-mode');
-    iconSpan.textContent = '🌙';
-    toggleBtn.title = 'Switch to dark mode';
-  }
-}
-
-// Initial mode
-if (savedMode === 'dark' || (!savedMode && prefersDark)) {
-  setMode(true);
-} else {
-  setMode(false);
-}
-
-toggleBtn.addEventListener('click', () => {
-  const isDark = document.body.classList.toggle('dark-mode');
-  setMode(isDark);
-  localStorage.setItem('themeMode', isDark ? 'dark' : 'light');
-});
-
-// Fade-in animation for all sections on scroll
-const sections = document.querySelectorAll('section');
-const fadeInOnScroll = (entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = 1;
-      entry.target.style.transform = 'translateY(0)';
-      observer.unobserve(entry.target);
-    }
-  });
-};
-const observer = new IntersectionObserver(fadeInOnScroll, { threshold: 0.15 });
-sections.forEach(section => {
-  observer.observe(section);
-});
-</script>
 </html>
